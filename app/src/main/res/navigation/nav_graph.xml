@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/alarmList">
+
+    <fragment
+        android:id="@+id/alarmList"
+        android:name="com.trungdunghoang125.myalarm.alarmlist.AlarmList"
+        android:label="fragment_alarm_list"
+        tools:layout="@layout/fragment_alarm_list" >
+        <action
+            android:id="@+id/action_alarmList_to_scheduleAlarm"
+            app:destination="@id/scheduleAlarm"
+            app:popUpTo="@id/alarmList"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_alarmList_to_editAlarm"
+            app:destination="@id/editAlarm"
+            app:popUpTo="@id/alarmList"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/scheduleAlarm"
+        android:name="com.trungdunghoang125.myalarm.shedulealarm.ScheduleAlarm"
+        android:label="ScheduleAlarm" >
+        <action
+            android:id="@+id/action_scheduleAlarm_to_alarmList"
+            app:destination="@id/alarmList"
+            app:popUpTo="@id/scheduleAlarm"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/editAlarm"
+        android:name="com.trungdunghoang125.myalarm.editalarm.EditAlarm"
+        android:label="EditAlarm" >
+        <action
+            android:id="@+id/action_editAlarm_to_alarmList"
+            app:destination="@id/alarmList"
+            app:popUpTo="@id/editAlarm"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
