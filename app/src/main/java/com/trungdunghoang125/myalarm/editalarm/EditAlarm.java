@@ -72,7 +72,6 @@ public class EditAlarm extends Fragment {
         sun.setChecked(getArguments().getBoolean("sun"));
         alarmID = getArguments().getInt("alarmID");
 
-
         // Set recurring option visible when check recurring checkbox
         recurring.setOnCheckedChangeListener((compoundButton, isCheck) -> {
             if (isCheck) {
@@ -117,7 +116,23 @@ public class EditAlarm extends Fragment {
 
         // update alarm item data in database
         editAlarmViewModel.update(alarmItem);
-        // set the new alarm time here
 
+        // set the new alarm time here
+        AlarmItem newAlarm = new AlarmItem(
+                alarmID,
+                timePicker.getHour(),
+                timePicker.getMinute(),
+                title.getText().toString(),
+                recurring.isChecked(),
+                mon.isChecked(),
+                tue.isChecked(),
+                wed.isChecked(),
+                thu.isChecked(),
+                fri.isChecked(),
+                sat.isChecked(),
+                sun.isChecked(),
+                true
+        );
+        newAlarm.scheduleAlarm(getContext());
     }
 }
