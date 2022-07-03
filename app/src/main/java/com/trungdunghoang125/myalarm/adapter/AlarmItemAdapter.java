@@ -1,9 +1,11 @@
 package com.trungdunghoang125.myalarm.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.trungdunghoang125.myalarm.alarmlist.ItemClick;
 import com.trungdunghoang125.myalarm.R;
 import com.trungdunghoang125.myalarm.database.AlarmItem;
+import com.trungdunghoang125.myalarm.services.AlarmService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +57,21 @@ public class AlarmItemAdapter extends RecyclerView.Adapter<AlarmItemAdapter.Alar
                 return true;
             }
         });
+
+        holder.swSetAlarm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    alarmItem.scheduleAlarm(compoundButton.getContext());
+                }
+                else {
+                    alarmItem.cancelAlarm(compoundButton.getContext());
+                    // use for stop alarm service
+                    Intent stopAlarmIntent = new Intent(compoundButton.getContext(), AlarmService.class);
+                    compoundButton.getContext().stopService(stopAlarmIntent);
+                }
+            }
+        });
     }
 
     @Override
@@ -93,6 +111,5 @@ public class AlarmItemAdapter extends RecyclerView.Adapter<AlarmItemAdapter.Alar
             // set switch button
             swSetAlarm.setChecked(alarmItem.isSetAlarm());
         }
-
     }
 }

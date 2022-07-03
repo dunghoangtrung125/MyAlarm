@@ -1,5 +1,6 @@
 package com.trungdunghoang125.myalarm.alarmlist;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -91,8 +92,31 @@ public class AlarmList extends Fragment implements ItemClick {
 
     @Override
     public void onItemLongClick(int alarmID) {
-        AlarmItem alarmItem = alarmListViewModel.queryThisItem(alarmID);
-        alarmItem.cancelAlarm(getContext());
-        alarmListViewModel.delete(alarmID);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Do you want to delete this alarm ?");
+        builder.setTitle("Delete alarm !");
+        builder.setCancelable(false);
+
+        builder.setPositiveButton(
+                "Yes",
+                (dialogInterface, i) -> {
+                    AlarmItem alarmItem = alarmListViewModel.queryThisItem(alarmID);
+                    alarmItem.cancelAlarm(getContext());
+                    alarmListViewModel.delete(alarmID);
+                }
+        );
+        builder.setNegativeButton(
+                "No",
+                (dialogInterface, i) -> {
+                    dialogInterface.cancel();
+                }
+        );
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    public void changeSwitchState(int alarmID) {
+
     }
 }
