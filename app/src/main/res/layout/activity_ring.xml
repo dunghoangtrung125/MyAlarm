@@ -1,42 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:src="@drawable/ring_image"
+        android:layout_marginBottom="150dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="309dp"
-        android:textAllCaps="true"
-        android:textSize="30sp"
-        android:text="Ring Ring Ring"
-        app:layout_constraintBottom_toTopOf="@+id/stop_alarm_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/stop_alarm_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stop"
-        app:layout_constraintBottom_toTopOf="@+id/snooze_alarm_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/stop_alarm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:background="#FFF"
+            android:elevation="10dp"
+            android:padding="10dp"
+            android:layout_marginRight="40dp"
+            android:text="Stop" />
 
-    <Button
-        android:id="@+id/snooze_alarm_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Snooze"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/snooze_alarm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Snooze"
+            android:background="#FFF"
+            android:padding="10dp"
+            android:elevation="11dp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_marginLeft="40dp"
+            android:textSize="25sp"/>
+    </LinearLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
