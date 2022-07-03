@@ -40,8 +40,23 @@ public class AlarmList extends Fragment implements ItemClick {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        alarmListViewModel = new ViewModelProvider(this).get(AlarmListViewModel.class);
+//        alarmListViewModel.getAllAlarms().observe(this, new Observer<List<AlarmItem>>() {
+//            @Override
+//            public void onChanged(List<AlarmItem> alarmItems) {
+//                if (alarmItems != null) {
+//                    alarmItemAdapter.setAlarms(alarmItems);
+//                }
+//            }
+//        });
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // update fragment data on screen
         alarmListViewModel = new ViewModelProvider(this).get(AlarmListViewModel.class);
-        alarmListViewModel.getAllAlarms().observe(this, new Observer<List<AlarmItem>>() {
+        alarmListViewModel.getAllAlarms().observe(getViewLifecycleOwner(), new Observer<List<AlarmItem>>() {
             @Override
             public void onChanged(List<AlarmItem> alarmItems) {
                 if (alarmItems != null) {
@@ -49,11 +64,7 @@ public class AlarmList extends Fragment implements ItemClick {
                 }
             }
         });
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_alarm_list, container, false);
         // set support action bar

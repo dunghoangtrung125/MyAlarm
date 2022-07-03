@@ -16,12 +16,26 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/MyAlarm/app/src/main/res/layout/fragment_edit_alarm.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/MyAlarm/app/src/main/res/layout/fragment_ring.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/MyAlarm/app/src/main/res/layout/fragment_schedule_alarm.xml" value="0.33" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.115" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_alarm_24.xml" value="0.115" />
+        <entry key="app/src/main/res/drawable/ic_baseline_alarm_on.xml" value="0.115" />
+        <entry key="app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.115" />
+        <entry key="app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.115" />
+        <entry key="app/src/main/res/drawable/ic_baseline_pause.xml" value="0.115" />
+        <entry key="app/src/main/res/drawable/ic_baseline_play_arrow.xml" value="0.115" />
+        <entry key="app/src/main/res/drawable/ic_baseline_refresh.xml" value="0.115" />
+        <entry key="app/src/main/res/drawable/ic_baseline_timer.xml" value="0.115" />
+        <entry key="app/src/main/res/drawable/ic_clock.xml" value="0.115" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.115" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_ring.xml" value="0.22" />
         <entry key="app/src/main/res/layout/alarm_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_alarm_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_edit_alarm.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_ring.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_schedule_alarm.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_stop_watch.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/menu_bottom.xml" value="0.19270833333333334" />
       </map>
     </option>
   </component>

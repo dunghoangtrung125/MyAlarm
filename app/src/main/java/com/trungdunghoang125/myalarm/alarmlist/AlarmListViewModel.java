@@ -20,7 +20,7 @@ public class AlarmListViewModel extends AndroidViewModel {
         alarmRepository = new AlarmRepository(application);
         allAlarms = alarmRepository.getAllAlarms();
     }
-    LiveData<List<AlarmItem>> getAllAlarms() {
+    public LiveData<List<AlarmItem>> getAllAlarms() {
         return allAlarms;
     }
 
