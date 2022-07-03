@@ -1,9 +1,11 @@
 package com.trungdunghoang125.myalarm.alarmlist;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.trungdunghoang125.myalarm.R;
 import com.trungdunghoang125.myalarm.adapter.AlarmItemAdapter;
@@ -37,7 +40,6 @@ public class AlarmList extends Fragment implements ItemClick {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //alarmListViewModel = ViewModelProviders.of(this).get(AlarmListViewModel.class);
         alarmListViewModel = new ViewModelProvider(this).get(AlarmListViewModel.class);
         alarmListViewModel.getAllAlarms().observe(this, new Observer<List<AlarmItem>>() {
             @Override
@@ -54,6 +56,11 @@ public class AlarmList extends Fragment implements ItemClick {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_alarm_list, container, false);
+        // set support action bar
+        MaterialToolbar toolbar = (MaterialToolbar) view.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        //toolbar.setBackgroundColor(Color.WHITE);
+        toolbar.setTitleTextColor(Color.BLACK);
         //
         rcAlarm = view.findViewById(R.id.rc_alarm);
         // adapter init
@@ -92,7 +99,7 @@ public class AlarmList extends Fragment implements ItemClick {
 
     @Override
     public void onItemLongClick(int alarmID) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.DialogeTheme);
         builder.setMessage("Do you want to delete this alarm ?");
         builder.setTitle("Delete alarm !");
         builder.setCancelable(false);
