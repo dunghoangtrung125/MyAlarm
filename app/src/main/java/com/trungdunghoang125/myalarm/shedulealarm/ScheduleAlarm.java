@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
@@ -46,7 +47,7 @@ public class ScheduleAlarm extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        scheduleAlarmViewModel = ViewModelProviders.of(this).get(ScheduleAlarmViewModel.class);
+        scheduleAlarmViewModel = new ViewModelProvider(this).get(ScheduleAlarmViewModel.class);
         alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
     }
 

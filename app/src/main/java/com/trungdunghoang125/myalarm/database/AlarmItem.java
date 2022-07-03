@@ -171,7 +171,6 @@ public class AlarmItem {
         intent.putExtra("FRIDAY", fri);
         intent.putExtra("SATURDAY", sat);
         intent.putExtra("SUNDAY", sun);
-
         intent.putExtra("TITLE", title);
 
         PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(context, alarmID, intent, 0);
