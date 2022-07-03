@@ -9,6 +9,8 @@ import androidx.annotation.RequiresApi;
 
 import com.trungdunghoang125.myalarm.services.AlarmService;
 
+import java.util.Calendar;
+
 public class AlarmBroadcastReceiver extends BroadcastReceiver {
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -20,7 +22,9 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
             startAlarmService(context, intent);
         }
         // start service alarm recurring
-
+        else if(isToday(intent)) {
+            startAlarmService(context, intent);
+        }
     }
 
     void startAlarmService(Context context, Intent intent) {
@@ -29,4 +33,33 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
         context.startService(intentService);
     }
 
+    boolean isToday(Intent intent) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        int today = calendar.get(Calendar.DAY_OF_WEEK);
+
+        if (today == Calendar.MONDAY && intent.getBooleanExtra("MONDAY", false)) {
+            return true;
+        }
+        else if (today == Calendar.TUESDAY && intent.getBooleanExtra("TUESDAY", false)) {
+            return true;
+        }
+        else if (today == Calendar.WEDNESDAY && intent.getBooleanExtra("WEDNESDAY", false)) {
+            return true;
+        }
+        else if (today == Calendar.THURSDAY && intent.getBooleanExtra("THURSDAY", false)) {
+            return true;
+        }
+        else if (today == Calendar.FRIDAY && intent.getBooleanExtra("FRIDAY", false)) {
+            return true;
+        }
+        else if (today == Calendar.SATURDAY && intent.getBooleanExtra("SATURDAY", false)) {
+            return true;
+        }
+        else if (today == Calendar.SUNDAY && intent.getBooleanExtra("SUNDAY", false)) {
+            return true;
+        }
+
+        else return false;
+    }
 }

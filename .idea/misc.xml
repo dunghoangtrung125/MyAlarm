@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/layout/alarm_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_alarm_list.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_ring.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_schedule_alarm.xml" value="0.19375" />
       </map>
     </option>
   </component>
