@@ -4,7 +4,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -186,23 +185,23 @@ public class AlarmItem {
         if (calendar.getTimeInMillis() <= System.currentTimeMillis()) {
             calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
         }
-
+        // Schedule one time alarm
         if (!recurring) {
-            Toast.makeText(context, "One time alarm", Toast.LENGTH_LONG).show();
-
+            String toastText = String.format("Schedule alarm successfully at %02d:%02d", hour, minute);
+            Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmPendingIntent);
         }
-//        else {
-//            Toast.makeText(context, "Recurring alarm", Toast.LENGTH_LONG).show();
-//
-//            final long RUN_DAILY = 24 * 60 * 60 * 1000;
-//            alarmManager.setRepeating(
-//                    AlarmManager.RTC_WAKEUP,
-//                    calendar.getTimeInMillis(),
-//                    RUN_DAILY,
-//                    alarmPendingIntent
-//            );
-//        }
+        // schedule recurring alarm
+        else {
+            Toast.makeText(context, "Recurring alarm", Toast.LENGTH_LONG).show();
+            long DAILY_INTERVAL = 24 * 60 * 60 * 1000;
+            alarmManager.setRepeating(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.getTimeInMillis(),
+                    DAILY_INTERVAL,
+                    alarmPendingIntent
+            );
+        }
         this.isSetAlarm = true;
     }
 
@@ -213,8 +212,8 @@ public class AlarmItem {
         alarmManager.cancel(alarmPendingIntent);
         this.isSetAlarm = false;
 
-        String toastText = String.format("Alarm cancelled for %02d:%02d with id %d", hour, minute, alarmID);
+        String toastText = String.format("Alarm at %02d:%02d cancelled successfully", hour, minute);
         Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
-        Log.i("cancel", toastText);
+//        Log.i("cancel", toastText);
     }
 }

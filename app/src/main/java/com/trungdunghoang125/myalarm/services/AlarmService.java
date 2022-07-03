@@ -38,7 +38,7 @@ public class AlarmService extends Service {
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(alarmTitle)
-                .setContentText("Ring Ring .. Ring Ring")
+                .setContentText("Tap here to stop or snooze alarm")
                 .setSmallIcon(R.drawable.ic_baseline_add_alarm_24)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
